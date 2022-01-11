@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -149,9 +150,17 @@ class ThemeSetting {
 
 Future<Directory> getDefaultDownloadDir() async {
   if (Platform.isAndroid) {
-    final paths =
-        await getExternalStorageDirectories(type: StorageDirectory.music);
+    final paths = await getExternalStorageDirectories(type: StorageDirectory.music);
     return paths!.first;
+  }
+  if(Platform.isIOS){
+    final dir = await getApplicationDocumentsDirectory();
+    // log(dir.path);
+    final exists = await dir.exists();
+    if(!exists){
+      dir.create(recursive: true);
+    }
+    return dir;
   }
   if (Platform.isLinux || Platform.isMacOS || Platform.isWindows) {
     final path = await getDownloadsDirectory();

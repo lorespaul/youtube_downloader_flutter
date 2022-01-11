@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "iOS Simulator",
+            "request": "launch",
+            "args": ["-d", "EFAFEF1B-54E2-482D-B9AB-F0726F7DAB78"],
+            "type": "dart"
+        },
+        {
+            "name": "Android emulator",
+            "request": "launch",
+            "args": ["-d", "emulator-5554"],
+            "type": "dart"
+        },
+        {
+            "name": "youtube_downloader_flutter (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        }
+    ]
+}
