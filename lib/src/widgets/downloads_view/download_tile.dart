@@ -5,11 +5,13 @@ import 'package:open_file/open_file.dart';
 import 'package:path/path.dart' as path;
 import 'package:youtube_downloader_flutter/src/models/download_manager.dart';
 import 'package:youtube_downloader_flutter/src/providers.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class DownloadTile extends HookWidget {
+  final advancedPlayer = AudioPlayer();
   final SingleTrack video;
 
-  const DownloadTile(this.video, {Key? key}) : super(key: key);
+  DownloadTile(this.video, {Key? key}) : super(key: key);
 
   String? getFileType(SingleTrack video) {
     final path = video.path;
@@ -60,7 +62,8 @@ class DownloadTile extends HookWidget {
   }
 
   Future<void> _openFile() async {
-    await OpenFile.open(video.path, type: getFileType(video));
+    // await OpenFile.open(video.path, type: getFileType(video));
+    await advancedPlayer.play(video.path, isLocal: true);
   }
 }
 
